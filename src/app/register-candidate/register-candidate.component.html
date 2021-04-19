@@ -1,0 +1,246 @@
+<!-- Toolbar -->
+
+<div class="content" role="main">
+
+  <div class="mat-title">Candidate Registration Form</div>
+  <mat-card>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+
+      <div class="card-container">
+        <div class="row">
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Salute *</mat-label>
+              <mat-select  formControlName="salute">
+                <mat-option value="Mr.">Mr.</mat-option>
+                <mat-option value="Ms.">Ms.</mat-option>
+              </mat-select>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.salute.touched || submitted) && registerFormControl.salute.errors?.required">
+                Please select atleast  one option
+              </mat-error>
+            </mat-form-field>
+
+
+          </div>
+
+
+          <div class="col-md-9 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>First Name *</mat-label>
+              <input matInput type="text" class="form-control" formControlName="fname">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.fname.touched || submitted) && registerFormControl.fname.errors?.required">
+                First Name is required
+              </mat-error>
+            </mat-form-field>&nbsp;
+
+            <mat-form-field class="pt-15" appearance="fill">
+              <mat-label>Middle Name *</mat-label>
+              <input matInput type="text" class="form-control" formControlName="mname" >
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.mname.touched || submitted) && registerFormControl.mname.errors?.required">
+                Middle Name is required
+              </mat-error>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field class="pt-15" appearance="fill">
+              <mat-label>Last Name *</mat-label>
+              <input matInput type="text" class="form-control" formControlName="lname">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.lname.touched || submitted) && registerFormControl.lname.errors?.required">
+                Last Name is required
+              </mat-error>
+            </mat-form-field>
+
+
+          </div>
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Select Gender *</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option *ngFor="let gender of gender" [value]="gender.value">
+                  {{gender.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.gender.touched || submitted) && registerFormControl.gender.errors?.required">
+                Please select atleast  one option
+              </mat-error>
+            </mat-form-field>
+
+
+          </div>
+
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Marital Status *</mat-label>
+              <mat-select formControlName="mstatus">
+                <mat-option value="one">Married</mat-option>
+                <mat-option value="two">Single</mat-option>
+              </mat-select>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.mstatus.touched || submitted) && registerFormControl.mstatus.errors?.required">
+                Please select atleast  one option
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="col-md-6 form-group">
+            <mat-form-field appearance="fill">
+              <input matInput [matDatepicker]="picker" placeholder="Birthdate *"  formControlName="datep">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.datep.touched || submitted) && registerFormControl.datep.errors?.required">
+                Please select atleast  one option
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter Valid Phone Number * </mat-label>
+              <input matInput type="number" class="form-control" formControlName="phone">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.phone.touched || submitted) && registerFormControl.phone.errors?.required">
+                Phone Number is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Enter Valid Email *</mat-label>
+              <input matInput type="email" class="form-control" formControlName="email">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">
+                Email is required
+              </mat-error>
+              <mat-error class="mat-error"
+                         *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+                Enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col-md-6 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Address *</mat-label>
+              <textarea matInput maxlength="256" placeholder="Enter Adddress Details"  matTextareaAutosize matAutosizeMinRows="2"
+                        matAutosizeMaxRows="5" type="text" class="form-control" formControlName="address"></textarea>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.address.touched || submitted) && registerFormControl.address.errors?.required">
+                Address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Aadhar Card Number *</mat-label>
+              <input matInput type="number" class="form-control" formControlName="adhar">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.adhar.touched || submitted) && registerFormControl.adhar.errors?.required">
+                Aadhar Number is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Pan Card Number *</mat-label>
+              <input matInput type="number" class="form-control" formControlName="pan">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.pan.touched || submitted) && registerFormControl.pan.errors?.required">
+                Pan Number is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Select Country *</mat-label>
+              <mat-select formControlName="country">
+                <mat-option value="one">1</mat-option>
+                <mat-option value="two">2</mat-option>
+                <mat-option value="three">3</mat-option>
+              </mat-select>
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.country.touched || submitted) && registerFormControl.country.errors?.required">
+                Please select atleast  one option
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="col-md-3 form-group">
+            <mat-form-field appearance="fill">
+              <input matInput type="password" placeholder="Password *" class="form-control" formControlName="password">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">
+                Password is required
+              </mat-error>
+              <mat-error class="mat-error"
+                         *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">
+                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                letter and 1 number
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div class="col-md-9 form-group">
+            <mat-form-field appearance="fill">
+              <input matInput type="password" placeholder="Confirm Password *" class="form-control" formControlName="confirmPassword">
+              <mat-error class="mat-error"
+                         *ngIf="(registerFormControl.confirmPassword.touched || submitted) && registerFormControl.confirmPassword.errors?.required">
+                Password is required
+              </mat-error>
+              <mat-error class="mat-error"
+                         *ngIf="registerFormControl.confirmPassword.touched && registerFormControl.confirmPassword.errors?.invalidPassword">
+                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                letter and 1 number
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-12 form-group">
+            <mat-checkbox appearance="fill" formControlName="check">
+              I accept terms and conditions
+            </mat-checkbox>
+
+          </div>
+
+          <div class="col-md-12 form-group">
+            <hr/>
+            <button mat-raised-button color='primary' type="submit">Submit Details</button>
+            <button mat-raised-button color='primary'>Next Page</button>
+          </div>
+
+        </div>
+
+      </div>
+      <hr/>
+    </form>
+  </mat-card>
+
+</div>
